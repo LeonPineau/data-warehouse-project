@@ -13,6 +13,7 @@ services:
     volumes:
       - dwh_pgdata:/var/lib/postgresql/data
       - ./docker/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+      - ./datasets:/datasets
     networks:
       - dwh_network
     healthcheck:

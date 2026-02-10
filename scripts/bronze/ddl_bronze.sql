@@ -1,23 +1,14 @@
 /*
 ===============================================================================
- Script Name : bronze_ddl.sql
+ Script Name : ddl_bronze.sql
  Purpose     : Initialize Bronze layer tables for the Data Warehouse
- Author      : <your_name>
 ===============================================================================
 
 Description:
 ------------
-This script initializes the **Bronze layer** of the Data Warehouse by creating
-raw ingestion tables for CRM and ERP source systems.
-
-The Bronze layer is designed to store **raw, untransformed data** as received
-from source systems, serving as the first landing zone in the data pipeline.
-
-Execution Context:
-------------------
-- Database : data_warehouse
-- Schema  : bronze
-- Layer   : Bronze (Raw data)
+    This script creates tables in the 'bronze' schema, dropping existing tables
+    if they already exists.
+    Run this script to re-define the DDL structure of 'bronze' Tables.
 
 ⚠️ WARNING – DATA LOSS RISK
 --------------------------
@@ -26,15 +17,8 @@ If executed on an environment where Bronze tables already contain data,
 ALL EXISTING DATA WILL BE PERMANENTLY DELETED.
 
 Before running this script:
-- Ensure you are in the correct environment (dev / stg / prd)
 - Backup existing data if required
-- Confirm that table recreation is intentional
 
-Technical Notes:
-----------------
-PostgreSQL does not support `CREATE OR REPLACE` for tables.
-Therefore, tables are explicitly dropped and recreated to ensure
-a clean and deterministic initialization of the Bronze layer.
 ===============================================================================
 */
 
