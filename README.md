@@ -38,6 +38,6 @@ These insights empower stakeholders with key business metrics, enabling strategi
 
 This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and share this project with proper attribution.
 
-## 💥 About Me
+## 🌟 About Me
 
-Hi there! I'm **Leon Pineau-Valencienne** a future with a passion for topics related to data engineering. I hope you'll enjoy the project.
+Hi there! I'm **Leon Pineau-Valencienne** a future data architect with a passion for topics related to data engineering. I hope you'll enjoy the project.

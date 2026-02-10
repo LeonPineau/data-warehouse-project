@@ -1,0 +1,29 @@
+services:
+  dwh:
+    container_name: dwh_postgres
+    image: postgres:17
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "7890:5432"
+    volumes:
+      - dwh_pgdata:/var/lib/postgresql/data
+      - ./docker/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    networks:
+      - dwh_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d data_warehouse" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+
+networks:
+  dwh_network:
+    name: dwh_network
+
+volumes:
+  dwh_pgdata:
