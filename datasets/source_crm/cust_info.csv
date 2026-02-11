@@ -1,6 +1,6 @@
 cst_id,cst_key,cst_firstname,cst_lastname,cst_marital_status,cst_gndr,cst_create_date
 11000,AW00011000, Jon,Yang ,M,M,2025-10-06
-11001,AW00011001,Eugene,Huang  ,S,M,2025-10-06
+11001,AW00011001,Eugene,Huang  ,S,m,2025-10-06
 11002,AW00011002,Ruben, Torres,M,M,2025-10-06
 11003,AW00011003,Christy,  Zhu,S,F,2025-10-06
 11004,AW00011004, Elizabeth,Johnson,S,F,2025-10-06
@@ -8,7 +8,7 @@ cst_id,cst_key,cst_firstname,cst_lastname,cst_marital_status,cst_gndr,cst_create
 11006,AW00011006,Janet,Alvarez,S,F,2025-10-06
 11007,AW00011007,Marco,Mehta,M,M,2025-10-06
 11008,AW00011008,Rob,Verhoff,S,F,2025-10-06
-11009,AW00011009,Shannon,Carlson,S,M,2025-10-06
+11009,AW00011009,Shannon,Carlson,S,M  ,2025-10-06
 11010,AW00011010,Jacquelyn,Suarez,S,F,2025-10-06
 11011,AW00011011,Curtis,Lu,M,M,2025-10-06
 11012,AW00011012,  Lauren, Walker,M,F,2025-10-06
