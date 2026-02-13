@@ -10,7 +10,7 @@ Description:
     if they already exists.
     Run this script to re-define the DDL structure of 'bronze' Tables.
 
-⚠️ WARNING – DATA LOSS RISK
+/!\ WARNING – DATA LOSS RISK /!\
 --------------------------
 This script uses `DROP TABLE IF EXISTS` before creating tables.
 If executed on an environment where Bronze tables already contain data,

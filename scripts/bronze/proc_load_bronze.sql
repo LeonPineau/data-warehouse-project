@@ -26,11 +26,11 @@ CREATE OR REPLACE PROCEDURE bronze.load_bronze()
 LANGUAGE plpgsql
 AS $$
 DECLARE
-    start_time timestamptz;
-    end_time timestamptz;
-    duration_time numeric;
-    batch_start_time timestamptz;
-    batch_end_time timestamptz;
+    start_time TIMESTAMPTZ;
+    end_time TIMESTAMPTZ;
+    duration_time NUMERIC;
+    batch_start_time TIMESTAMPTZ;
+    batch_end_time TIMESTAMPTZ;
 BEGIN
     batch_start_time := clock_timestamp();
     RAISE NOTICE '====================================================';
@@ -41,7 +41,6 @@ BEGIN
     RAISE NOTICE '                 Loading CRM tables';
     RAISE NOTICE '----------------------------------------------------';
 
-    -- Load bronze.crm_cust_info
     start_time := clock_timestamp();
     RAISE NOTICE '>> Truncating Table: bronze.crm_cust_info';
     TRUNCATE TABLE bronze.crm_cust_info;
@@ -60,7 +59,6 @@ BEGIN
     RAISE NOTICE '>> Load Duration: % ms', duration_time * 1000;
     RAISE NOTICE '----------------------------------------------------';
 
-    -- Load bronze.crm_cust_info
     RAISE NOTICE '>> Truncating Table: bronze.crm_prd_info';
     start_time := clock_timestamp();
     TRUNCATE TABLE bronze.crm_prd_info;
@@ -79,7 +77,6 @@ BEGIN
     RAISE NOTICE '>> Load Duration: % ms', duration_time * 1000;
     RAISE NOTICE '----------------------------------------------------';
 
-    -- Load bronze.crm_sales_details
     RAISE NOTICE '>> Truncating Table: bronze.crm_sales_details';
     start_time := clock_timestamp();
     TRUNCATE TABLE bronze.crm_sales_details;
@@ -101,7 +98,6 @@ BEGIN
     RAISE NOTICE '                 Loading ERP tables';
     RAISE NOTICE '----------------------------------------------------';
 
-    -- Load bronze.erp_cust_az12
     RAISE NOTICE '>> Truncating Table: bronze.erp_cust_az12';
     start_time := clock_timestamp();
     TRUNCATE TABLE bronze.erp_cust_az12;
@@ -120,7 +116,6 @@ BEGIN
     RAISE NOTICE '>> Load Duration: % ms', duration_time * 1000;
     RAISE NOTICE '----------------------------------------------------';
 
-    -- Load bronze.erp_loc_A101
     RAISE NOTICE '>> Truncating Table: bronze.erp_loc_a101';
     start_time := clock_timestamp();
     TRUNCATE TABLE bronze.erp_loc_a101;
@@ -139,7 +134,6 @@ BEGIN
     RAISE NOTICE '>> Load Duration: % ms', duration_time * 1000;
     RAISE NOTICE '----------------------------------------------------';
 
-    -- Load bronze.erp_px_cat_g1v2
     RAISE NOTICE '>> Truncating Table: bronze.erp_px_cat_g1v2';
     start_time := clock_timestamp();
     TRUNCATE TABLE bronze.erp_px_cat_g1v2;
@@ -156,15 +150,17 @@ BEGIN
     duration_time := EXTRACT(EPOCH FROM (end_time - start_time));
 
     RAISE NOTICE '>> Load Duration: % ms', duration_time * 1000;
-    RAISE NOTICE '----------------------------------------------------';
 
     batch_end_time := clock_timestamp();
     duration_time := EXTRACT(EPOCH FROM (batch_end_time - batch_start_time));
-    RAISE NOTICE '>> Total batch duration: % ms', duration_time * 1000;
+    RAISE NOTICE '====================================================';
+    RAISE NOTICE '>> Loading Bronze Layer is Completed';
+    RAISE NOTICE '>> Total Load Duration: % ms', duration_time * 1000;
+    RAISE NOTICE '====================================================';
 
 EXCEPTION
     WHEN others THEN
-        RAISE NOTICE 'Erreur detectee : %', SQLERRM;
+        RAISE NOTICE 'Error detected : %', SQLERRM;
 
 END;
 $$;
